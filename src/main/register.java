@@ -37,7 +37,7 @@ public class register extends javax.swing.JFrame {
         txtUsername = new javax.swing.JLabel();
         btnBuatAkun = new javax.swing.JButton();
         txtUsername1 = new javax.swing.JLabel();
-        nama = new javax.swing.JTextField();
+        namaPanggilanField = new javax.swing.JTextField();
         usernameField2 = new javax.swing.JTextField();
         txtUsername2 = new javax.swing.JLabel();
 
@@ -122,11 +122,11 @@ public class register extends javax.swing.JFrame {
         txtUsername1.setForeground(new java.awt.Color(130, 130, 130));
         txtUsername1.setText("Nama Panggilan");
 
-        nama.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        nama.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(242, 242, 242), 2, true));
-        nama.addActionListener(new java.awt.event.ActionListener() {
+        namaPanggilanField.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        namaPanggilanField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(242, 242, 242), 2, true));
+        namaPanggilanField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                namaActionPerformed(evt);
+                namaPanggilanFieldActionPerformed(evt);
             }
         });
 
@@ -154,7 +154,7 @@ public class register extends javax.swing.JFrame {
                         .addComponent(btnBuatAkun, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtUsername)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(namaPanggilanField, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtUsername1)))
                     .addComponent(usernameField2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUsername2))
@@ -170,7 +170,7 @@ public class register extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUsername1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(namaPanggilanField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtUsername2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -235,9 +235,9 @@ public class register extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBuatAkunActionPerformed
 
-    private void namaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaActionPerformed
+    private void namaPanggilanFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaPanggilanFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_namaActionPerformed
+    }//GEN-LAST:event_namaPanggilanFieldActionPerformed
 
     private void usernameField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameField2ActionPerformed
         // TODO add your handling code here:
@@ -286,8 +286,8 @@ public class register extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel logo;
-    private javax.swing.JTextField nama;
     private javax.swing.JTextField namaLengkapField;
+    private javax.swing.JTextField namaPanggilanField;
     private javax.swing.JLabel txtSubtitle;
     private javax.swing.JLabel txtTitle;
     private javax.swing.JLabel txtUsername;
