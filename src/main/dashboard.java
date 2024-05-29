@@ -32,6 +32,7 @@ public class dashboard extends javax.swing.JFrame {
         logo = new javax.swing.JLabel();
         txtTitle = new javax.swing.JLabel();
         btnRegistrasi = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -50,6 +51,7 @@ public class dashboard extends javax.swing.JFrame {
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/Wallet.png"))); // NOI18N
 
         txtTitle.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        txtTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtTitle.setText("Rp0.00");
         txtTitle.setToolTipText("");
 
@@ -71,15 +73,11 @@ public class dashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(logo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtSubtitle)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnRegistrasi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(34, 34, 34))))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(txtSubtitle)
+                    .addComponent(txtTitle)
+                    .addComponent(btnRegistrasi, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,13 +104,19 @@ public class dashboard extends javax.swing.JFrame {
                 .addGap(88, 88, 88)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(87, 87, 87))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparator1)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(67, 67, 67)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(281, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(223, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -177,6 +181,7 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrasi;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel txtSubtitle;
     private javax.swing.JLabel txtTitle;

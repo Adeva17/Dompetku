@@ -60,6 +60,11 @@
                   <Component id="jPanel2" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
               </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jSeparator1" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -67,7 +72,9 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="281" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                  <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+                  <EmptySpace pref="223" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -87,19 +94,12 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="logo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="125" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="txtSubtitle" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="btnRegistrasi" max="32767" attributes="0"/>
-                                  <Component id="txtTitle" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="2" attributes="0">
+                          <Component id="txtSubtitle" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTitle" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnRegistrasi" alignment="2" min="-2" pref="151" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -150,6 +150,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="48" style="1"/>
                 </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Rp0.00"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
@@ -177,6 +178,8 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JSeparator" name="jSeparator1">
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
