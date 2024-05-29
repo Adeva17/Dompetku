@@ -26,6 +26,7 @@ public class dashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         txtSubtitle = new javax.swing.JLabel();
@@ -33,7 +34,11 @@ public class dashboard extends javax.swing.JFrame {
         txtTitle = new javax.swing.JLabel();
         btnRegistrasi = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        btnMasuk = new javax.swing.JButton();
+        btnLihatLaporan = new javax.swing.JButton();
+        btnTambahPemasukan = new javax.swing.JButton();
+        btnTambahPengeluaran = new javax.swing.JButton();
+
+        jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -97,13 +102,33 @@ public class dashboard extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        btnMasuk.setBackground(new java.awt.Color(41, 100, 204));
-        btnMasuk.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        btnMasuk.setForeground(new java.awt.Color(255, 255, 255));
-        btnMasuk.setText("Tambah Pemasukan");
-        btnMasuk.addActionListener(new java.awt.event.ActionListener() {
+        btnLihatLaporan.setBackground(new java.awt.Color(41, 100, 204));
+        btnLihatLaporan.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        btnLihatLaporan.setForeground(new java.awt.Color(255, 255, 255));
+        btnLihatLaporan.setText("Lihat Laporan");
+        btnLihatLaporan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMasukActionPerformed(evt);
+                btnLihatLaporanActionPerformed(evt);
+            }
+        });
+
+        btnTambahPemasukan.setBackground(new java.awt.Color(41, 100, 204));
+        btnTambahPemasukan.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        btnTambahPemasukan.setForeground(new java.awt.Color(255, 255, 255));
+        btnTambahPemasukan.setText("Tambah Pemasukan");
+        btnTambahPemasukan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTambahPemasukanActionPerformed(evt);
+            }
+        });
+
+        btnTambahPengeluaran.setBackground(new java.awt.Color(41, 100, 204));
+        btnTambahPengeluaran.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        btnTambahPengeluaran.setForeground(new java.awt.Color(255, 255, 255));
+        btnTambahPengeluaran.setText("Tambah Pengeluaran");
+        btnTambahPengeluaran.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTambahPengeluaranActionPerformed(evt);
             }
         });
 
@@ -120,8 +145,11 @@ public class dashboard extends javax.swing.JFrame {
                 .addComponent(jSeparator1)
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(btnMasuk)
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnTambahPengeluaran, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLihatLaporan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnTambahPemasukan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -131,9 +159,13 @@ public class dashboard extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnMasuk, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(btnTambahPemasukan, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnTambahPengeluaran, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(btnLihatLaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -156,12 +188,20 @@ public class dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegistrasiActionPerformed
 
-    private void btnMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasukActionPerformed
+    private void btnLihatLaporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLihatLaporanActionPerformed
         // TODO add your handling code here:
         dashboard select = new dashboard();
         this.setVisible(false);
         select.setVisible(true);
-    }//GEN-LAST:event_btnMasukActionPerformed
+    }//GEN-LAST:event_btnLihatLaporanActionPerformed
+
+    private void btnTambahPemasukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahPemasukanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTambahPemasukanActionPerformed
+
+    private void btnTambahPengeluaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahPengeluaranActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTambahPengeluaranActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,11 +242,14 @@ public class dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnMasuk;
+    private javax.swing.JButton btnLihatLaporan;
     private javax.swing.JButton btnRegistrasi;
+    private javax.swing.JButton btnTambahPemasukan;
+    private javax.swing.JButton btnTambahPengeluaran;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel txtSubtitle;
     private javax.swing.JLabel txtTitle;
