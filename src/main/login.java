@@ -178,6 +178,9 @@ public class login extends javax.swing.JFrame {
 
     private void btnMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasukActionPerformed
         // TODO add your handling code here:
+        dashboard select = new dashboard();
+        this.setVisible(false);
+        select.setVisible(true);
     }//GEN-LAST:event_btnMasukActionPerformed
 
     private void btnRegistrasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrasiActionPerformed
