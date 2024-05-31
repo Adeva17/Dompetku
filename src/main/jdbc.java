@@ -17,7 +17,7 @@ import java.sql.DriverManager;
 public class jdbc {
   
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/financialmanagerapp";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/Dompetku";
     private static final String USER = "root1";
     private static final String PASS = "root1234";
     
