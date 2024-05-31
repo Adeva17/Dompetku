@@ -58,12 +58,10 @@ public class pemasukan extends javax.swing.JFrame {
         jLabel1.setText("Pemasukan");
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nominal");
 
         namaLengkapField.setBackground(new java.awt.Color(235, 235, 235));
         namaLengkapField.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        namaLengkapField.setForeground(new java.awt.Color(0, 0, 0));
         namaLengkapField.setBorder(null);
         namaLengkapField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

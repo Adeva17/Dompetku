@@ -100,7 +100,6 @@ public class pengeluaran extends javax.swing.JFrame {
 
         namaLengkapField.setBackground(new java.awt.Color(235, 235, 235));
         namaLengkapField.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        namaLengkapField.setForeground(new java.awt.Color(0, 0, 0));
         namaLengkapField.setBorder(null);
         namaLengkapField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,7 +109,6 @@ public class pengeluaran extends javax.swing.JFrame {
 
         namaLengkapField1.setBackground(new java.awt.Color(235, 235, 235));
         namaLengkapField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        namaLengkapField1.setForeground(new java.awt.Color(0, 0, 0));
         namaLengkapField1.setBorder(null);
         namaLengkapField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,7 +118,6 @@ public class pengeluaran extends javax.swing.JFrame {
 
         namaLengkapField2.setBackground(new java.awt.Color(235, 235, 235));
         namaLengkapField2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        namaLengkapField2.setForeground(new java.awt.Color(0, 0, 0));
         namaLengkapField2.setBorder(null);
         namaLengkapField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,11 +130,9 @@ public class pengeluaran extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nominal");
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nama Barang");
 
         btnLihatLaporan.setBackground(new java.awt.Color(41, 100, 204));
@@ -152,12 +147,10 @@ public class pengeluaran extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Deskripsi Barang");
 
         jComboBox1.setBackground(new java.awt.Color(235, 235, 235));
         jComboBox1.setEditable(true);
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ilegal", "TKDN", "BNIB", "Pesawat" }));
         jComboBox1.setBorder(null);
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -168,7 +161,6 @@ public class pengeluaran extends javax.swing.JFrame {
 
         jLabel5.setBackground(new java.awt.Color(0, 0, 0));
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Pilih Kategori");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -246,7 +238,7 @@ public class pengeluaran extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(62, 62, 62)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
         );
