@@ -3,11 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package main;
-import java.sql.DriverManager;
-import java.sql.Statement;
-import java.sql.ResultSet;
-import java.sql.Connection;
-import javax.swing.JOptionPane;
+
 /**
  *
  * @author Adeva
@@ -182,25 +178,9 @@ public class login extends javax.swing.JFrame {
 
     private void btnMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasukActionPerformed
         // TODO add your handling code here:
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/Dompetku","root1","root1234");
-            String UserName = usernameField.getText();
-            Statement stm = connect.createStatement();
-            String sql = "select * from datauser where UserName = '"+UserName+"' ";
-            ResultSet rs = stm.executeQuery(sql);
-            if(rs.next()){
-                dashboard select = new dashboard();
-                this.setVisible(false);
-                select.setVisible(true);
-            }else{
-            JOptionPane.showMessageDialog(this, "username wrong");
-            usernameField.setText("");
-             }
-            connect.close();
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
+        dashboard select = new dashboard();
+        this.setVisible(false);
+        select.setVisible(true);
     }//GEN-LAST:event_btnMasukActionPerformed
 
     private void btnRegistrasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrasiActionPerformed
