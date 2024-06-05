@@ -38,41 +38,63 @@ public class Laporan extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jTable2.setBackground(new java.awt.Color(204, 255, 255));
-        jTable2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTable2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTable2.setForeground(new java.awt.Color(0, 0, 0));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"05 Apr 2024", "Cat 1", "500000", "ABCD"},
-                {"32 Mei 20223", "Cat 3", "250000", "EFG"},
-                {"18 Juli 2021", "Cat 6", "950625", "MBHC"},
-                {"00 Jan 2001", "Cat 3", "450000", "ZZZYYY"},
-                {"99 Dec 9999", "Cat 2", "123999", "AAABBB"},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {"Indomie Cabe ijo",  new Integer(2800), "Makanan", "KOF (King Of Food)", "Pemasukan"},
+                {"Honda Beat Street",  new Integer(20300000), "Kendaraan Bermotor", "Transportasi", "Pengeluaran"},
+                {"Asus Vivobook Pro M6500QC",  new Integer(11499000), "Laptop & Komputer", "Kebutuhan kuliah", "Pengeluaran"},
+                {"Fiio KA13",  new Integer(1199000), "Elektronik", "USB DAC", "Pemasukan"},
+                {"Galvanize Square Steel",  new Integer(200000), "Bahan Bangunan", "Dapat meluaskan ruangan", "Pemasukan"},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Date", "Category", "Nominal", "Notes"
+                "Nama Barang", "Nominal", "Kategori", "Deskripsi", "Keterangan"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jTable2.setPreferredSize(new java.awt.Dimension(580, 300));
         jScrollPane2.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setMinWidth(140);
+            jTable2.getColumnModel().getColumn(0).setPreferredWidth(140);
+            jTable2.getColumnModel().getColumn(0).setMaxWidth(140);
+            jTable2.getColumnModel().getColumn(1).setMinWidth(70);
+            jTable2.getColumnModel().getColumn(1).setPreferredWidth(70);
+            jTable2.getColumnModel().getColumn(1).setMaxWidth(70);
+            jTable2.getColumnModel().getColumn(2).setMinWidth(100);
+            jTable2.getColumnModel().getColumn(2).setPreferredWidth(100);
+            jTable2.getColumnModel().getColumn(2).setMaxWidth(100);
+            jTable2.getColumnModel().getColumn(4).setMinWidth(90);
+            jTable2.getColumnModel().getColumn(4).setPreferredWidth(90);
+            jTable2.getColumnModel().getColumn(4).setMaxWidth(90);
+        }
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         jLabel1.setText("Laporan");
@@ -101,7 +123,7 @@ public class Laporan extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(270, 270, 270)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
