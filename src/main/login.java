@@ -4,17 +4,26 @@
  */
 package main;
 
+import java.sql.*;
+import javax.swing.JOptionPane;
+import database.dbkoneksi;
 /**
  *
  * @author Adeva
  */
 public class login extends javax.swing.JFrame {
 
+    Connection connect;
+    Statement st;
+    ResultSet rs;
+    dbkoneksi koneksi;
     /**
      * Creates new form login
      */
     public login() {
         initComponents();
+        koneksi = new dbkoneksi();
+        connect = koneksi.getConnection();
     }
 
     /**
@@ -178,13 +187,33 @@ public class login extends javax.swing.JFrame {
 
     private void btnMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasukActionPerformed
         // TODO add your handling code here:
-        dashboard select = new dashboard();
-        this.setVisible(false);
-        select.setVisible(true);
+        String UserName = usernameField.getText();
+        String sql = "select * from datauser where UserName = '"+UserName+"' ";
+        try{
+            st = connect.createStatement();
+            rs = st.executeQuery(sql);
+        
+            if(rs.next()){
+                JOptionPane.showMessageDialog(rootPane, "Welcome " + rs.getString("NamaLengkap") + "!");
+                dispose();
+                dashboard select = new dashboard();
+                this.setVisible(false);
+                select.setVisible(true);
+            }else{
+            JOptionPane.showMessageDialog(this, "username wrong");
+            usernameField.setText(""); 
+             }
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(rootPane, e);
+        }  
     }//GEN-LAST:event_btnMasukActionPerformed
 
     private void btnRegistrasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrasiActionPerformed
         // TODO add your handling code here:
+        register select = new register();
+        this.setVisible(false);
+        select.setVisible(true);
+    }                            
     }//GEN-LAST:event_btnRegistrasiActionPerformed
 
     /**
