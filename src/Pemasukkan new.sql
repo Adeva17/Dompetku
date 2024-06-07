@@ -43,14 +43,16 @@ public class PemasukanForm extends JFrame {
             int nominal = Integer.parseInt(nominalStr);
 
             try (Connection connection = DatabaseConnection.getConnection()) {
-                String checkSql = "SELECT COUNT(*) FROM pemasukan WHERE username = ?";
+                String checkSql = "SELECT nominal FROM pemasukan WHERE username = ?";
                 try (PreparedStatement checkStatement = connection.prepareStatement(checkSql)) {
                     checkStatement.setString(1, username);
                     try (ResultSet resultSet = checkStatement.executeQuery()) {
-                        if (resultSet.next() && resultSet.getInt(1) > 1) {
+                        if (resultSet.next()) {
+                            int currentNominal = resultSet.getInt(1);
+                            int newNominal = currentNominal + nominal;
                             String updateSql = "UPDATE pemasukan SET nominal = ? WHERE username = ?";
                             try (PreparedStatement updateStatement = connection.prepareStatement(updateSql)) {
-                                updateStatement.setInt(1, nominal);
+                                updateStatement.setInt(1, newNominal);
                                 updateStatement.setString(2, username);
                                 updateStatement.executeUpdate();
                                 JOptionPane.showMessageDialog(this, "Data berhasil diperbarui!");
@@ -93,3 +95,4 @@ class DatabaseConnection {
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
+}
