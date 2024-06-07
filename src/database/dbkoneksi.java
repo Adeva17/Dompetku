@@ -17,7 +17,7 @@ public class dbkoneksi {
     public dbkoneksi(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connect = DriverManager.getConnection("jdbc:mysql://192.168.0.9:3306/dompetku","root","");
+            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/dompetku","root","");
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
