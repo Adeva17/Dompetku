@@ -47,7 +47,7 @@ public class PemasukanForm extends JFrame {
                 try (PreparedStatement checkStatement = connection.prepareStatement(checkSql)) {
                     checkStatement.setString(1, username);
                     try (ResultSet resultSet = checkStatement.executeQuery()) {
-                        if (resultSet.next() && resultSet.getInt(1) > 0) {
+                        if (resultSet.next() && resultSet.getInt(1) > 1) {
                             String updateSql = "UPDATE pemasukan SET nominal = ? WHERE username = ?";
                             try (PreparedStatement updateStatement = connection.prepareStatement(updateSql)) {
                                 updateStatement.setInt(1, nominal);
