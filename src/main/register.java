@@ -4,17 +4,27 @@
  */
 package main;
 
+import java.sql.*;
+import javax.swing.JOptionPane;
+import database.dbkoneksi;
 /**
  *
  * @author Adeva
  */
 public class register extends javax.swing.JFrame {
 
+    Connection connect;
+    Statement st;
+    ResultSet rs;
+    dbkoneksi koneksi;
+    String NamaLengkap, NamaPanggilan, UserName;
     /**
      * Creates new form login
      */
     public register() {
         initComponents();
+        koneksi = new dbkoneksi();
+        connect = koneksi.getConnection();
     }
 
     /**
@@ -233,6 +243,28 @@ public class register extends javax.swing.JFrame {
 
     private void btnBuatAkunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuatAkunActionPerformed
         // TODO add your handling code here:
+        NamaLengkap = namaLengkapField.getText();
+        NamaPanggilan = namaPanggilanField.getText();
+        UserName = usernameField2.getText();
+        if(checkNamalengkap() == true){
+            if(checkNamapanggilan() == true){
+                if(checkUsername() == true){
+                    insertdata();
+                    login Login = new login();
+                    this.setVisible(false);
+                    Login.setVisible(true);
+                }else{
+                    JOptionPane.showMessageDialog(this, "input wrong");
+                    clearForm();
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "input wrong");
+                   clearForm();
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "input wrong");
+            clearForm();
+        }
     }//GEN-LAST:event_btnBuatAkunActionPerformed
 
     private void namaPanggilanFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaPanggilanFieldActionPerformed
@@ -277,6 +309,76 @@ public class register extends javax.swing.JFrame {
                 new register().setVisible(true);
             }
         });
+    }
+
+    private boolean checkNamalengkap(){
+        boolean checkNamalengkap;
+        NamaLengkap = namaLengkapField.getText().toString();
+        String errorNamalengkap = "Nama lengkap hanya terdiri dari karakter huruf A-Z.";
+        checkNamalengkap = NamaLengkap.matches("[a-zA-Z\s]+");
+        try{
+            if (checkNamalengkap == false){
+                JOptionPane.showMessageDialog(this, errorNamalengkap);
+                return false;
+            }else return true;
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+        return true;
+    }
+    
+    private boolean checkNamapanggilan(){
+        boolean checkNamapanggilan;
+        NamaPanggilan = namaPanggilanField.getText().toString();
+        String errorNamapanggilan = "Nama panggilan hanya terdiri dari karakter huruf A-Z.";
+        checkNamapanggilan = NamaPanggilan.matches("[a-zA-Z\s]+");
+        try{
+            if (checkNamapanggilan == false){
+                JOptionPane.showMessageDialog(this, errorNamapanggilan);
+                return false;
+            }else return true;
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+        return true;
+    }
+    
+    public boolean checkUsername(){
+        boolean checkUsername;
+        UserName = usernameField2.getText().toString();
+        String errorUsername = "Username hanya terdiri dari karakter huruf A-Z.";
+        checkUsername = UserName.matches("[a-zA-Z\s]+");
+        try{
+            if (checkUsername == false){
+                JOptionPane.showMessageDialog(this, errorUsername);
+                return false;
+            }else return true;
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+        return true;
+    }
+    
+    public boolean insertdata(){
+        try{ 
+            st = connect.createStatement();
+            int insert = st.executeUpdate("INSERT INTO datauser(NamaLengkap, NamaPanggilan, UserName)"
+                    + "VALUES ('" + NamaLengkap + "','" + NamaPanggilan + "','" + UserName + "') ");
+            if(insert == 1){
+                JOptionPane.showMessageDialog(rootPane, "Data Tersimpan");
+            }
+            return true;
+            
+        }catch (SQLException ex){
+            JOptionPane.showMessageDialog(null, "error 2 : " + ex.getMessage());
+        }
+        return false;
+    }
+    
+    private void clearForm(){
+        namaLengkapField.setText("");
+        namaPanggilanField.setText("");
+        usernameField2.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
