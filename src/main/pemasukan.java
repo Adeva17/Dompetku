@@ -4,12 +4,20 @@
  */
 package main;
 
+import database.dbkoneksi;
+import java.sql.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Administrator
  */
 public class pemasukan extends javax.swing.JFrame {
 
+    Connection connect;
+    Statement st;
+    ResultSet rs;
+    dbkoneksi koneksi;
+    int userId;
     /**
      * Creates new form pemasukan
      */
@@ -17,6 +25,13 @@ public class pemasukan extends javax.swing.JFrame {
         initComponents();
     }
 
+    public pemasukan(int userId) {
+        initComponents();
+        koneksi = new dbkoneksi();
+        connect = koneksi.getConnection();
+        this.userId = userId;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -115,6 +130,7 @@ public class pemasukan extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        checkPemasukan();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -153,6 +169,34 @@ public class pemasukan extends javax.swing.JFrame {
         });
     }
 
+    private boolean checkPemasukan() {
+        boolean checkPemasukan;
+        String nominalText = Field_Nominal.getText();
+        String errorPemasukan = "Nominal harus berupa angka.";
+        checkPemasukan = nominalText.matches("\\d+");
+    
+        if (!checkPemasukan) {
+            JOptionPane.showMessageDialog(null, errorPemasukan);
+            return false;
+        } else {
+            int nominal = Integer.parseInt(nominalText);
+            try {
+            String sqlInsert = "INSERT INTO pemasukan (IdUser, Nominal, Tanggal) VALUES (?, ?, CURRENT_DATE)";
+            PreparedStatement psInsert = connect.prepareStatement(sqlInsert);
+            psInsert.setInt(1, userId);
+            psInsert.setInt(2, nominal);
+            psInsert.executeUpdate();
+            
+            dashboard select = new dashboard(userId);
+            this.setVisible(false);
+            select.setVisible(true);
+            } catch (SQLException e) {
+            JOptionPane.showMessageDialog(rootPane, "Error: " + e.getMessage());
+            }
+        }
+        return true;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Field_Nominal;
     private javax.swing.JLabel Label_Nominal;
