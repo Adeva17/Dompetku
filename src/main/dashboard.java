@@ -4,12 +4,24 @@
  */
 package main;
 
+import database.dbkoneksi;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import java.text.NumberFormat;
+import java.util.Locale;
 /**
  *
  * @author Adeva
  */
 public class dashboard extends javax.swing.JFrame {
 
+    Connection connect;
+    Statement st;
+    ResultSet rs;
+    dbkoneksi koneksi;
+    int userId;
+    private int Nominal1;
+    private int Nominal2;
     /**
      * Creates new form login
      */
@@ -17,6 +29,15 @@ public class dashboard extends javax.swing.JFrame {
         initComponents();
     }
 
+    public dashboard(int userId) {
+        initComponents();
+        koneksi = new dbkoneksi();
+        connect = koneksi.getConnection();
+        this.userId = userId;
+        showData1();
+        showData2();
+        showData3();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -260,17 +281,23 @@ public class dashboard extends javax.swing.JFrame {
 
     private void btnLihatLaporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLihatLaporanActionPerformed
         // TODO add your handling code here:
-        dashboard select = new dashboard();
+        Laporan select = new Laporan(userId);
         this.setVisible(false);
         select.setVisible(true);
     }//GEN-LAST:event_btnLihatLaporanActionPerformed
 
     private void btnTambahPemasukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahPemasukanActionPerformed
         // TODO add your handling code here:
+        pemasukan select = new pemasukan(userId);
+        this.setVisible(false);
+        select.setVisible(true);
     }//GEN-LAST:event_btnTambahPemasukanActionPerformed
 
     private void btnTambahPengeluaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahPengeluaranActionPerformed
         // TODO add your handling code here:
+        pengeluaran select = new pengeluaran(userId);
+        this.setVisible(false);
+        select.setVisible(true);
     }//GEN-LAST:event_btnTambahPengeluaranActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
@@ -313,6 +340,49 @@ public class dashboard extends javax.swing.JFrame {
                 new dashboard().setVisible(true);
             }
         });
+    }
+
+    private void showData1() {
+    String sqlPemasukan = "SELECT SUM(Nominal) AS totalNominal FROM pemasukan WHERE IdUser = ? AND DATE(Tanggal) >= DATE_SUB(CURRENT_DATE, INTERVAL 1 MONTH)";
+    try {
+        PreparedStatement ps = connect.prepareStatement(sqlPemasukan);
+        ps.setInt(1, userId);
+        rs = ps.executeQuery();
+        // Proses menampilkan data pemasukan
+        if (rs.next()) {
+            Nominal1 = rs.getInt("totalNominal");
+            NumberFormat formatter = NumberFormat.getNumberInstance(new Locale("id", "ID"));
+            jTextField2.setText("Rp." + formatter.format(Nominal1));
+        } else {
+            jTextField2.setText("Rp.0");
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(rootPane, e);
+    }
+}
+
+    private void showData2() {
+        String sqlPengeluaran = "SELECT SUM(Nominal) AS totalNominal FROM pengeluaran WHERE IdUser = ? AND DATE(Tanggal) >= DATE_SUB(CURRENT_DATE, INTERVAL 1 MONTH)";
+        try {
+            PreparedStatement ps = connect.prepareStatement(sqlPengeluaran);
+            ps.setInt(1, userId);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                Nominal2 = rs.getInt("totalNominal");
+                NumberFormat formatter = NumberFormat.getNumberInstance(new Locale("id", "ID"));
+                jTextField3.setText("Rp." + formatter.format(Nominal2));
+            } else {
+                jTextField3.setText("Rp.0");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+    }
+
+    private void showData3() {
+        int sisaBudget = Nominal1 - Nominal2;
+        NumberFormat formatter = NumberFormat.getNumberInstance(new Locale("id", "ID"));
+        txtTitle.setText("Rp." + formatter.format(sisaBudget));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
