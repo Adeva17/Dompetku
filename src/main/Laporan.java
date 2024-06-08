@@ -4,12 +4,25 @@
  */
 package main;
 
+import database.dbkoneksi;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import java.text.NumberFormat;
+import java.util.Locale;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.SwingConstants;
 /**
  *
  * @author Administrator
  */
 public class Laporan extends javax.swing.JFrame {
 
+    Connection connect;
+    Statement st;
+    ResultSet rs;
+    dbkoneksi koneksi;
+    int userId;
     /**
      * Creates new form Laporan
      */
@@ -17,6 +30,14 @@ public class Laporan extends javax.swing.JFrame {
         initComponents();
     }
 
+    public Laporan(int userId) {
+        initComponents();
+        koneksi = new dbkoneksi();
+        connect = koneksi.getConnection();
+        this.userId = userId;
+        loadData();
+        setColumnAlignment();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -157,7 +178,7 @@ public class Laporan extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Dashboard select = new Dashboard();
+        Dashboard select = new Dashboard(userId);
         this.setVisible(false);
         select.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -197,6 +218,58 @@ public class Laporan extends javax.swing.JFrame {
         });
     }
 
+    private void loadData() {
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0);
+        try {
+            String queryPemasukan = "SELECT Nominal FROM pemasukan " +
+                                "WHERE IdUser = ? AND Tanggal >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)";
+        try (PreparedStatement psPemasukan = connect.prepareStatement(queryPemasukan)) {
+            psPemasukan.setInt(1, userId);
+            rs = psPemasukan.executeQuery();
+            while (rs.next()) {
+                Object[] row = {
+                    "",
+                    formatNominal(rs.getInt("Nominal")),
+                    "",
+                    "",
+                    "Pemasukan"
+                };
+                model.addRow(row);
+            }
+        }
+            String queryPengeluaran = "SELECT NamaBarang, Nominal, Kategori, Deskripsi, Keterangan FROM pengeluaran " +
+                                  "WHERE IdUser = ? AND Tanggal >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)";
+            try (PreparedStatement psPengeluaran = connect.prepareStatement(queryPengeluaran)) {
+                psPengeluaran.setInt(1, userId);
+                rs = psPengeluaran.executeQuery();
+                while (rs.next()) {
+                    Object[] row = {
+                        rs.getString("NamaBarang"),
+                        formatNominal(rs.getInt("Nominal")),
+                        rs.getString("Kategori"),
+                        rs.getString("Deskripsi"),
+                        rs.getString("Keterangan")
+                    };
+                    model.addRow(row);
+                }
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error loading data: " + e.getMessage());
+        }
+    }
+    
+    private String formatNominal(int nominal) {
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(new Locale("id", "ID"));
+        return "Rp. " + numberFormat.format(nominal);
+    }
+    
+    private void setColumnAlignment() {
+        DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer();
+        leftRenderer.setHorizontalAlignment(SwingConstants.LEFT);
+        jTable2.getColumnModel().getColumn(1).setCellRenderer(leftRenderer);
+    }  
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
