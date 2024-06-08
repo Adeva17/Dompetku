@@ -194,9 +194,10 @@ public class login extends javax.swing.JFrame {
             rs = st.executeQuery(sql);
         
             if(rs.next()){
+                int userId = rs.getInt("IdUser");
                 JOptionPane.showMessageDialog(rootPane, "Welcome " + rs.getString("NamaLengkap") + "!");
                 dispose();
-                dashboard select = new dashboard();
+                dashboard select = new dashboard(userId);
                 this.setVisible(false);
                 select.setVisible(true);
             }else{
