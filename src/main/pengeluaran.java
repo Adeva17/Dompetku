@@ -4,12 +4,22 @@
  */
 package main;
 
+import database.dbkoneksi;
+import java.sql.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Administrator
  */
 public class pengeluaran extends javax.swing.JFrame {
 
+    Connection connect;
+    Statement st;
+    ResultSet rs;
+    dbkoneksi koneksi;
+    int userId;
+    String NamaBarang, Deskripsi, Kategori, Keterangan;
+    int Nominal;
     /**
      * Creates new form pengeluaran
      */
@@ -17,6 +27,13 @@ public class pengeluaran extends javax.swing.JFrame {
         initComponents();
     }
 
+    public pengeluaran(int userId) {
+        initComponents();
+        koneksi = new dbkoneksi();
+        connect = koneksi.getConnection();
+        this.userId = userId;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -196,6 +213,14 @@ public class pengeluaran extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        if (!checkInput()) {
+        return;
+        }
+        NamaBarang = Field_NamaBarang.getText();
+        Deskripsi = Field_Deskripsi.getText();
+        Kategori = Box_Kategori.getSelectedItem().toString();
+        Nominal = Integer.parseInt(Field_Nominal.getText());
+        insertInput(NamaBarang, Deskripsi, Kategori, Nominal);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -233,6 +258,59 @@ public class pengeluaran extends javax.swing.JFrame {
         });
     }
 
+    private boolean checkInput() {
+        NamaBarang = Field_NamaBarang.getText();
+        Deskripsi = Field_Deskripsi.getText();
+        Kategori = Box_Kategori.getSelectedItem().toString();
+        String nominalText = Field_Nominal.getText();
+        if (!nominalText.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "Nominal harus berupa angka");
+            return false;
+        }
+        if (NamaBarang.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Nama Barang belum diisi");
+            return false;
+        }
+        if (Deskripsi.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Deskripsi belum diisi");
+            return false;
+        } 
+        if (Kategori.equals("Pilih Kategori")) {
+            JOptionPane.showMessageDialog(this, "Kategori belum dipilih");
+            return false;
+        }
+    return true;
+}
+
+    private void insertInput(String NamaBarang, String Deskripsi, String Kategori, int Nominal) {
+        String sqlInsert = "INSERT INTO pengeluaran (IdUser, NamaBarang, Nominal, Kategori, Deskripsi, Keterangan, "
+                + "Tanggal) VALUES (?, ?, ?, ?, ?, ?, CURRENT_DATE)";
+    
+        try (PreparedStatement ps = connect.prepareStatement(sqlInsert)) {
+        ps.setInt(1, userId);
+        ps.setString(2, NamaBarang);
+        ps.setInt(3, Nominal);
+        ps.setString(4, Kategori);
+        ps.setString(5, Deskripsi);
+        ps.setString(6, "Pengeluaran");
+        
+        int rowsInserted = ps.executeUpdate();
+        if (rowsInserted > 0) {
+            JOptionPane.showMessageDialog(this, "Data berhasil disimpan");
+            // Clear the fields after successful insert
+            Field_NamaBarang.setText("");
+            Field_Nominal.setText("");
+            Field_Deskripsi.setText("");
+            Box_Kategori.setSelectedIndex(0);
+        }
+        dashboard select = new dashboard(userId);
+        this.setVisible(false);
+        select.setVisible(true);
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+    }
+}
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Box_Kategori;
     private javax.swing.JTextField Field_Deskripsi;
